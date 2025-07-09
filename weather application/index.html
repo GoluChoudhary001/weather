@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 3D Weather Animations Container -->
+    <div class="weather-animations" id="weatherAnimations">
+        <!-- Sunny Animation -->
+        <div class="sunny-animation" id="sunnyAnimation"></div>
+        
+        <!-- Rainy Animation -->
+        <div class="rainy-animation" id="rainyAnimation"></div>
+        
+        <!-- Cloudy Animation -->
+        <div class="cloudy-animation" id="cloudyAnimation"></div>
+        
+        <!-- Snowy Animation -->
+        <div class="snowy-animation" id="snowyAnimation"></div>
+        
+        <!-- Night Animation -->
+        <div class="night-animation" id="nightAnimation"></div>
+    </div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-cloud-sun"></i>
+                <h1>Weather Forecast</h1>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search for a city...">
+                <div id="cityPreview"></div>
+                <button onclick="searchWeather()">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="location-btn" onclick="getCurrentLocation()">
+                    <i class="fas fa-map-marker-alt"></i>
+                </button>
+            </div>
+            <div class="header-actions">
+                <div class="user-profile" id="userProfile" style="display: none;">
+                    <div class="user-info">
+                        <span id="userName">Guest</span>
+                        <span id="userStatus">Guest User</span>
+                    </div>
+                    <div class="user-menu">
+                        <button class="profile-btn" onclick="toggleUserMenu()">
+                            <i class="fas fa-user-circle"></i>
+                        </button>
+                        <div class="dropdown-menu" id="userDropdown">
+                            <div class="menu-item" onclick="showProfile()">
+                                <i class="fas fa-user"></i>
+                                Profile
+                            </div>
+                            <div class="menu-item" onclick="showSettings()">
+                                <i class="fas fa-cog"></i>
+                                Settings
+                            </div>
+                            <div class="menu-item" onclick="showFavorites()">
+                                <i class="fas fa-heart"></i>
+                                Favorites
+                            </div>
+                            <div class="menu-divider"></div>
+                            <div class="menu-item" onclick="logout()">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Logout
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="login-btn" id="loginBtn" onclick="showLoginPrompt()">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </button>
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="refresh-btn" onclick="refreshWeather()">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Login Prompt Modal -->
+    <div class="modal-overlay" id="loginModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Welcome to Weather App!</h2>
+                <button class="close-btn" onclick="closeLoginModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Create an account to save your preferences, favorite cities, and get personalized weather alerts!</p>
+                <div class="modal-actions">
+                    <button class="modal-btn primary" onclick="goToLogin()">
+                        <i class="fas fa-user-plus"></i>
+                        Create Account
+                    </button>
+                    <button class="modal-btn secondary" onclick="goToLogin()">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Sign In
+                    </button>
+                    <button class="modal-btn guest" onclick="continueAsGuest()">
+                        <i class="fas fa-user-secret"></i>
+                        Continue as Guest
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="news-card">
+            <h2>Weather News</h2>
+            <div class="news-container" id="newsContainer">
+                <!-- News items will be added here dynamically -->
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="weather">
+                <img src="images/rain.png" alt="weather icon" class="weather-icon" id="weatherIcon">
+                <h1 class="temp" id="temperature">--°C</h1>
+                <h2 class="city" id="cityName">--</h2>
+                <p class="time" id="currentTime">--:--</p>
+                <div class="details">
+                    <div class="col">
+                        <img src="images/humidity.png" alt="humidity">
+                        <div>
+                            <p class="humidity" id="humidity">--%</p>
+                            <p>Humidity</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <img src="images/wind.png" alt="wind">
+                        <div>
+                            <p class="wind" id="windSpeed">-- km/h</p>
+                            <p>Wind Speed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="forecast-card">
+            <h2>5-Day Forecast</h2>
+            <div class="forecast-container" id="forecastContainer">
+                <!-- Forecast items will be added here dynamically -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Authentication Check Script -->
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

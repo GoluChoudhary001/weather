@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Weather App</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 3D Background Animation -->
+    <div class="background-3d">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+            <div class="shape shape-6"></div>
+        </div>
+        <div class="particles"></div>
+    </div>
+
+    <!-- Main Login Container -->
+    <div class="login-container-3d">
+        <!-- 3D Card Container -->
+        <div class="card-3d-wrapper">
+            <div class="card-3d">
+                <!-- Card Front -->
+                <div class="card-front">
+                    <div class="logo-section">
+                        <div class="logo-3d">
+                            <div class="logo-icon">
+                                <i class="fas fa-cloud-sun"></i>
+                            </div>
+                            <h1 class="logo-title">Weather Forecast</h1>
+                            <p class="logo-subtitle">Enter the world of weather</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tabs-3d">
+                        <button class="tab-3d active" onclick="switchTab3D('login')">
+                            <span class="tab-icon"><i class="fas fa-sign-in-alt"></i></span>
+                            <span class="tab-text">Sign In</span>
+                        </button>
+                        <button class="tab-3d" onclick="switchTab3D('register')">
+                            <span class="tab-icon"><i class="fas fa-user-plus"></i></span>
+                            <span class="tab-text">Register</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Login Form -->
+                    <form id="loginForm3D" class="form-3d">
+                        <div class="input-group-3d">
+                            <div class="input-wrapper">
+                                <i class="fas fa-envelope input-icon"></i>
+                                <input type="email" id="loginEmail3D" placeholder="Email" required>
+                                <div class="input-line"></div>
+                            </div>
+                        </div>
+                        <div class="input-group-3d">
+                            <div class="input-wrapper">
+                                <i class="fas fa-lock input-icon"></i>
+                                <input type="password" id="loginPassword3D" placeholder="Password" required>
+                                <div class="input-line"></div>
+                                <button type="button" class="toggle-password-3d" onclick="togglePassword3D('loginPassword3D')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-options-3d">
+                            <label class="checkbox-3d">
+                                <input type="checkbox" id="rememberMe3D">
+                                <span class="checkmark-3d"></span>
+                                Remember me
+                            </label>
+                            <a href="#" class="forgot-link-3d">Forgot Password?</a>
+                        </div>
+                        <button type="submit" class="btn-3d primary">
+                            <span class="btn-content">
+                                <i class="fas fa-sign-in-alt"></i>
+                                Sign In
+                            </span>
+                            <div class="btn-glow"></div>
+                        </button>
+                    </form>
+                    
+                    <!-- Register Form -->
+                    <form id="registerForm3D" class="form-3d" style="display: none;">
+                        <div class="input-group-3d">
+                            <div class="input-wrapper">
+                                <i class="fas fa-user input-icon"></i>
+                                <input type="text" id="registerName3D" placeholder="Full Name" required>
+                                <div class="input-line"></div>
+                            </div>
+                        </div>
+                        <div class="input-group-3d">
+                            <div class="input-wrapper">
+                                <i class="fas fa-envelope input-icon"></i>
+                                <input type="email" id="registerEmail3D" placeholder="Email" required>
+                                <div class="input-line"></div>
+                            </div>
+                        </div>
+                        <div class="input-group-3d">
+                            <div class="input-wrapper">
+                                <i class="fas fa-lock input-icon"></i>
+                                <input type="password" id="registerPassword3D" placeholder="Password" required>
+                                <div class="input-line"></div>
+                                <button type="button" class="toggle-password-3d" onclick="togglePassword3D('registerPassword3D')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="input-group-3d">
+                            <div class="input-wrapper">
+                                <i class="fas fa-lock input-icon"></i>
+                                <input type="password" id="confirmPassword3D" placeholder="Confirm Password" required>
+                                <div class="input-line"></div>
+                                <button type="button" class="toggle-password-3d" onclick="togglePassword3D('confirmPassword3D')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-options-3d">
+                            <label class="checkbox-3d">
+                                <input type="checkbox" id="agreeTerms3D" required>
+                                <span class="checkmark-3d"></span>
+                                I agree to the <a href="#" class="terms-link-3d">Terms & Conditions</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn-3d primary">
+                            <span class="btn-content">
+                                <i class="fas fa-user-plus"></i>
+                                Create Account
+                            </span>
+                            <div class="btn-glow"></div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Social Login Section -->
+        <div class="social-section-3d">
+            <div class="divider-3d">
+                <span>Or continue with</span>
+            </div>
+            <div class="social-buttons-3d">
+                <button class="social-btn-3d google">
+                    <div class="social-icon">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <span>Google</span>
+                </button>
+                <button class="social-btn-3d facebook">
+                    <div class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <span>Facebook</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Guest Login -->
+        <div class="guest-section-3d">
+            <p>Don't want to create an account?</p>
+            <button class="btn-3d guest" onclick="continueAsGuest3D()">
+                <span class="btn-content">
+                    <i class="fas fa-user-secret"></i>
+                    Continue as Guest
+                </span>
+            </button>
+        </div>
+    </div>
+    
+    <!-- 3D Weather Icons Animation -->
+    <div class="weather-icons-3d">
+        <div class="weather-icon-3d sun">
+            <i class="fas fa-sun"></i>
+        </div>
+        <div class="weather-icon-3d cloud">
+            <i class="fas fa-cloud"></i>
+        </div>
+        <div class="weather-icon-3d rain">
+            <i class="fas fa-cloud-rain"></i>
+        </div>
+        <div class="weather-icon-3d snow">
+            <i class="fas fa-snowflake"></i>
+        </div>
+    </div>
+    
+    <script src="login.js"></script>
+</body>
+</html> 
